@@ -20,9 +20,9 @@ func (s *ServiceSurvey) Create(p *model.Survey) error {
 	return s.storageSurvey.Create(p)
 }
 
-// func (s *ServiceSurvey) GetAll() (model.Surveys, error) {
-// 	return s.storageSurvey.GetAll()
-// }
+func (s *ServiceSurvey) GetAll() (model.Surveys, error) {
+	return s.storageSurvey.GetAll()
+}
 
 func (s *ServiceSurvey) create(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
@@ -51,22 +51,21 @@ func (s *ServiceSurvey) create(w http.ResponseWriter, r *http.Request) {
 	responseJSON(w, http.StatusCreated, response)
 }
 
-// func (s *ServiceSurvey) getAll(w http.ResponseWriter, r *http.Request) {
-// 	if r.Method != http.MethodGet {
-// 		//Devolvemos un JSON con el mensaje de error
-// 		response := newResponse(Error, "Método no permitido", nil)
-// 		responseJSON(w, http.StatusBadRequest, response)
-// 		return
-// 	}
+func (s *ServiceSurvey) getAll(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		response := newResponse(Error, "Método no permitido", nil)
+		responseJSON(w, http.StatusBadRequest, response)
+		return
+	}
 
-// 	data, err := s.GetAll()
-// 	if err != nil {
-// 		response := newResponse(Error, "Hubo un problema al obtener los datos", nil)
-// 		responseJSON(w, http.StatusInternalServerError, response)
-// 		return
-// 	}
+	data, err := s.GetAll()
+	if err != nil {
+		response := newResponse(Error, "Hubo un problema al obtener los datos", nil)
+		responseJSON(w, http.StatusInternalServerError, response)
+		return
+	}
 
-// 	response := newResponse(Message, "OK", data)
-// 	responseJSON(w, http.StatusOK, response)
+	response := newResponse(Message, "OK", data)
+	responseJSON(w, http.StatusOK, response)
 
-// }
+}

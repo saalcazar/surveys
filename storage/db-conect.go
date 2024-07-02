@@ -12,7 +12,7 @@ import (
 var (
 	db    *sql.DB
 	once  sync.Once
-	local string = "host=localhost port=5432 user=saalcazar password=a1b2c3d4c0 dbname=surveys sslmode=disable"
+	local string = "host=viaduct.proxy.rlwy.net port=48709 user=postgres password=ZdJrPJsAMvuIdZnjFzvbKjUGJZrckPLh dbname=railway sslmode=require"
 )
 
 func NewPostgresDB() {
