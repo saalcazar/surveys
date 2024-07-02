@@ -19,7 +19,7 @@ func main() {
 	handler.RouteSurvey(mux, serviceSurvey)
 
 	c := cors.New(cors.Options{
-		AllowedOrigins: []string{"http://localhost:8080/v1/", "http://localhost:5173", "https://surveys-results.vercel.app/"},
+		AllowedOrigins: []string{"http://localhost:8080/v1/", "http://localhost:5173", "https://surveys-results.vercel.app"},
 		AllowedMethods: []string{"DELETE", "GET", "POST", "PUT"},
 	})
 
